@@ -46,9 +46,11 @@ namespace UnicontaBasics.Core.Managers
             if(_key.Equals(Guid.Empty))
                 throw new InvalidOperationException("API key not set");
 
-            if (_username == null || _password == null)
+            if (_username == null || _password == null) {
                 _username = username;
                 _password = password;
+            }
+                
 
             var result = await _session.LoginAsync(_username, _password, Uniconta.Common.User.LoginType.API, _key);
             return result;
